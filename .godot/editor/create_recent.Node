@@ -1,0 +1,15 @@
+XRCamera3D
+TileMap
+Sprite2D
+Node2D
+Camera2D
+RigidBody2D
+Marker2D
+CollisionShape2D
+Area2D
+Node3D
+Skeleton3D
+Timer
+StaticBody2D
+CollisionPolygon2D
+CharacterBody2D

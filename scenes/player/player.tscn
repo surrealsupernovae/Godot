@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://yy6gvi0rnyjd"]
+
+[ext_resource type="Texture2D" uid="uid://dihvrflmqp2pp" path="res://graphics/player/player.png" id="1_8iwkb"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_v0lrx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibbh2"]
+radius = 64.0078
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v0lrx")
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+position = Vector2(39, 3)
+rotation = 1.5708
+texture = ExtResource("1_8iwkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ibbh2")
+
+[node name="LaserTime" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="GrenadeTime" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="LaserStartPositions" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="laser" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(16, -130)
+
+[node name="laser2" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(28, -130)
+
+[node name="laser3" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(22, -132)
+
+[node name="GrenadeStartPosition" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Grenade" type="Marker2D" parent="GrenadeStartPosition"]
+position = Vector2(22, -132)
+
+[node name="Grenade2" type="Marker2D" parent="GrenadeStartPosition"]
+position = Vector2(28, -130)
+
+[node name="Grenade3" type="Marker2D" parent="GrenadeStartPosition"]
+position = Vector2(16, -130)
+
+[connection signal="timeout" from="LaserTime" to="." method="_on_laser_time_timeout"]
+[connection signal="timeout" from="GrenadeTime" to="." method="_on_grenade_time_timeout"]
